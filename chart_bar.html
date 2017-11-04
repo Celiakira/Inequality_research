@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyChart</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="Chart.bundle.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">SOCIAL WEALTH</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-4">社会财富整体分配状况</h1>
+          <br />
+          <p>(师兄可以在此处写指导语)当今社会财富分配不均，社会不同阶层群体的财富总量在分配过程中是不同的,......，：</p>
+          <p><strong>财富分配状况是不同的，具体如下：</strong></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <p><h4 class="display-8">1.分配极为平均</h4><br /><button id="updatedata1" class="btn btn-success">点击观察数据 »</button></p>
+            <hr />
+            <p><h4 class="display-8">2.分配不平均</h4><br /><button id="updatedata2" class="btn btn-info">点击观察数据 »</button></p>
+            <hr />
+            <p><h4 class="display-8">3.分配极不平均</h4><br /><button id="updatedata3" class="btn btn-warning">点击观察数据 »</button></p>
+          </div>
+          <div class="col-md-9">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="jumbotron bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <a class = "btn btn-danger btn-block" href="chart_summary.html" role="button">下一步</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx,{
+        type:"bar",
+
+        data:{
+          labels:["低"," "," "," ","高"],
+          datasets:[
+            {
+            label: 'Wealth of the Group',
+            data: [0,0,0,0,0],
+            backgroundColor: [
+              'rgba(255,99,132,0.7)',
+              'rgba(54,162,235,0.7)',
+              'rgba(255,206,86,0.7)',
+              'rgba(153,102,255,0.7)',
+              'rgba(255,159,64,0.7)'
+            ],
+            borderColor:[
+              'rgba(255,99,132,1)',
+              'rgba(54,162,235,1)',
+              'rgba(255,206,86,1)',
+              'rgba(153,102,255,1)',
+              'rgba(255,159,64,1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+
+        options: {
+          animation:{
+            duration:"4000"
+          },
+          legend:false,
+          events:false,
+          scales: {
+            yAxes: [{
+              ticks:{
+                max: 50,
+                min:0,
+                stepSize:10,
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      });
+    </script>
+
+    <script>
+    updatedata1.onclick = function(){
+      myChart.data.datasets[0].data[0] = 20;
+      myChart.data.datasets[0].data[1] = 20;
+      myChart.data.datasets[0].data[2] = 20;
+      myChart.data.datasets[0].data[3] = 20;
+      myChart.data.datasets[0].data[4] = 20;
+
+      myChart.update({
+        duration:4000,
+      })
+    }
+
+    updatedata2.onclick = function(){
+      myChart.data.datasets[0].data[0] = 10;
+      myChart.data.datasets[0].data[1] = 15;
+      myChart.data.datasets[0].data[2] = 20;
+      myChart.data.datasets[0].data[3] = 25;
+      myChart.data.datasets[0].data[4] = 30;
+
+      myChart.update({
+        duration:4000,
+      })
+    }
+
+    updatedata3.onclick = function(){
+      myChart.data.datasets[0].data[0] = 5;
+      myChart.data.datasets[0].data[1] = 10;
+      myChart.data.datasets[0].data[2] = 15;
+      myChart.data.datasets[0].data[3] = 20;
+      myChart.data.datasets[0].data[4] = 50;
+
+      myChart.update({
+        duration:4000,
+      })
+    }
+    </script>
+
+    </body>
+</html>
