@@ -77,7 +77,7 @@
 
         options: {
           animation:{
-            duration:"4000"
+            duration:"2000"
           },
           legend:false,
           events:false,
@@ -97,6 +97,7 @@
     </script>
 
     <script>
+<<<<<<< HEAD
       function function1(){
         setTimeout(function(){
           document.getElementById("instruction").innerHTML = '而现实社会中的收入分配并不均等<br \\><br \\>收入分配状况如图所示：';
@@ -132,6 +133,43 @@
         document.getElementById("again").className = "btn btn-danger btn-block";
         document.getElementById("next").className = "btn btn-success btn-block";
       },12000)};
+=======
+    updatedata1.onclick = function(){
+      myChart.data.datasets[0].data[0] = 20;
+      myChart.data.datasets[0].data[1] = 20;
+      myChart.data.datasets[0].data[2] = 20;
+      myChart.data.datasets[0].data[3] = 20;
+      myChart.data.datasets[0].data[4] = 20;
+
+      myChart.update({
+        duration:2000,
+      })
+    }
+
+    updatedata2.onclick = function(){
+      myChart.data.datasets[0].data[0] = 10;
+      myChart.data.datasets[0].data[1] = 15;
+      myChart.data.datasets[0].data[2] = 20;
+      myChart.data.datasets[0].data[3] = 25;
+      myChart.data.datasets[0].data[4] = 30;
+
+      myChart.update({
+        duration:2000,
+      })
+    }
+
+    updatedata3.onclick = function(){
+      myChart.data.datasets[0].data[0] = 5;
+      myChart.data.datasets[0].data[1] = 10;
+      myChart.data.datasets[0].data[2] = 15;
+      myChart.data.datasets[0].data[3] = 20;
+      myChart.data.datasets[0].data[4] = 50;
+
+      myChart.update({
+        duration:2000,
+      })
+    }
+>>>>>>> f7ca7f12167d7878abe5d5e00e93c7c767eb9ba0
     </script>
 
   </body>
