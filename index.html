@@ -23,12 +23,18 @@
         <div class="container">
           <h3>社会财富整体分配状况</h3>
           <hr />
-          <p id="instruction" style="line-height:40px">收入分配均等是指在一定时期内经济活动成果平均分配给各经济主体，每人具有相同的收入，<br \>收入分配状况如图所示：</p>
+          <p id="instruction" style="line-height:30px ">收入分配均等是指在一定时期内经济活动成果平均分配给各经济主体，每人具有相同的收入。</p>
         </div>
     </div>
 
     <div class="container">
-      <canvas id="myChart"></canvas>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
       <hr>
     </div>
 
@@ -99,7 +105,7 @@
     <script>
       function function1(){
         setTimeout(function(){
-          document.getElementById("instruction").innerHTML = '而现实社会中的收入分配并不均等<br \\><br \\>收入分配状况如图所示：';
+          document.getElementById("instruction").innerHTML = '而现实社会中的收入分配并不均等。';
           myChart.data.datasets[0].data[0] = 10;
           myChart.data.datasets[0].data[1] = 15;
           myChart.data.datasets[0].data[2] = 20;
@@ -113,7 +119,7 @@
 
       function function2(){
         setTimeout(function(){
-          document.getElementById("instruction").innerHTML = '甚至存在极大差异<br \\><br \\>收入分配状况如图所示：';
+          document.getElementById("instruction").innerHTML = '甚至存在极大差异。';
           myChart.data.datasets[0].data[0] = 5;
           myChart.data.datasets[0].data[1] = 10;
           myChart.data.datasets[0].data[2] = 15;
@@ -128,7 +134,7 @@
     function function3(){
       setTimeout(function(){
         document.getElementById("again").href="index.html";
-        document.getElementById("next").href="chart_summary.html";
+        document.getElementById("next").href="introduction.html";
         document.getElementById("again").className = "btn btn-danger btn-block";
         document.getElementById("next").className = "btn btn-success btn-block";
       },12000)};

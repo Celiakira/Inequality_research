@@ -12,6 +12,7 @@
   </head>
 
   <body>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">SOCIAL WEALTH</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,44 +22,38 @@
 
     <div class="jumbotron">
         <div class="container">
-          <h1 class="display-4">社会财富整体分配状况</h1>
-          <br />
-          <p>(师兄可以在此处写指导语)当今社会财富分配不均，社会不同阶层群体的财富总量在分配过程中是不同的,......，：</p>
-          <p><strong>财富分配状况是不同的，具体如下：</strong></p>
+          <p>请点击下方按钮，对他人收入再分配，同时注意自己收入排名的变化:</p>
+          <button id="redistribution" class="btn btn-success btn-block">社会财富再分配 »</button>
         </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <p align="center"><strong>(师兄可以在此处写指导语)</strong></p>
-          <br />
+        <div class="col-md-6 col-xs-6">
+          <p><strong id="tag1">您的财富标注为红色，图为您与他人的收入比较：</strong></p>
           <canvas id = "myPieChart"></canvas>
           <hr />
-          <br />
-          <button id="redistribution" class="btn btn-success btn-block">社会财富再分配 »</button>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6 col-xs-6">
+          <p><strong id="tag2">您的财富在当前情况下排名第四：</strong></p>
           <canvas id = "myBarChart"></canvas>
+          <hr />
         </div>
       </div>
-      <hr />
     </div>
 
-    <div class="jumbotron bg-dark">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <a class = "btn btn-danger btn-block" href="index.html" role="button">没看明白，再次观看</a>
-          </div>
-          <div class="col-md-4">
-            <a class = "btn btn-success btn-block" href="#" role="button">我已理解，进入调查</a>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-md-6">
+          <a id = "again" class = "btn btn-secondary btn-block" href="#" role="button">没看明白，再次观看</a>
+          <br />
+        </div>
+        <div class="col-sm-4 col-md-6">
+          <a id="next" class = "btn btn-secondary btn-block" href="#" role="button">我已理解，进入调查</a>
         </div>
       </div>
     </div>
+
 
     <script>
       var ctx = document.getElementById("myBarChart").getContext("2d");
@@ -102,7 +97,7 @@
           scales: {
             xAxes: [{
               ticks:{
-                max: 80,
+                max: 70,
                 min:0,
                 stepSize:10,
                 beginAtZero:true
@@ -151,7 +146,6 @@
           },
           legend:false,
           events:false,
-          legend: false
         }
       });
 
@@ -159,6 +153,13 @@
 
     <script>
     redistribution.onclick = function(){
+      document.getElementById("tag1").innerHTML = '他人受财富再分配影响，而你的财富没有变化：';
+      document.getElementById("tag2").innerHTML = '再分配没影响到你的排名，你的排名保持不变：';
+      document.getElementById("redistribution").className = "btn btn-secondary btn-block";
+      document.getElementById("again").className = "btn btn-danger btn-block";
+      document.getElementById("next").className = "btn btn-success btn-block";
+      document.getElementById("again").href = "chart_summary.html";
+      document.getElementById("next").href = "#";
       myPieChart.data.datasets[0].data[0] = 23;
       myPieChart.data.datasets[0].data[1] = 4;
       myPieChart.data.datasets[0].data[2] = 6;
@@ -182,11 +183,11 @@
 
 
       myPieChart.update({
-        duration:4000,
+        duration:3000,
       });
 
       myBarChart.update({
-        duration:4000,
+        duration:3000,
       })
     }
     </script>
