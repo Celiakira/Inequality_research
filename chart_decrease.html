@@ -23,7 +23,6 @@
     <div class="jumbotron">
         <div class="container">
           <p>请点击下方按钮，对他人收入再分配，同时注意自己收入排名的变化:</p>
-          <button id="redistribution" class="btn btn-success btn-block">社会财富再分配 »</button>
         </div>
     </div>
 
@@ -43,6 +42,8 @@
     </div>
 
     <div class="container">
+      <button id="redistribution" class="btn btn-success btn-block">社会财富再分配 »</button>
+      <br />
       <div class="row">
         <div class="col-sm-4 col-md-6">
           <a id = "again" class = "btn btn-secondary btn-block" href="#" role="button">没看明白，再次观看</a>
@@ -154,12 +155,14 @@
     <script>
     redistribution.onclick = function(){
       document.getElementById("tag1").innerHTML = '他人受财富再分配影响，而你的财富没有变化：';
-      document.getElementById("tag2").innerHTML = '再分配虽没影响的财富，但导致你的财富排名下降：';
+      document.getElementById("tag2").innerHTML = '再分配虽没影响你的财富，但导致你的财富排名下降：';
       document.getElementById("redistribution").className = "btn btn-secondary btn-block";
+
       document.getElementById("again").className = "btn btn-danger btn-block";
       document.getElementById("next").className = "btn btn-success btn-block";
       document.getElementById("again").href = "chart_summary.html";
       document.getElementById("next").href = "#";
+
       myPieChart.data.datasets[0].data[0] = 23;
       myPieChart.data.datasets[0].data[1] = 4;
       myPieChart.data.datasets[0].data[2] = 6;
